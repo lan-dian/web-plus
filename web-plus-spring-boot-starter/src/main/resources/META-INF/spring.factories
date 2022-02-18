@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.landao.web.plus.WebPlusAutoConfigure,\
+com.landao.web.plus.config.ObjectMapperFormatConfig,\
+com.landao.web.plus.config.MybatisPlusConfig
