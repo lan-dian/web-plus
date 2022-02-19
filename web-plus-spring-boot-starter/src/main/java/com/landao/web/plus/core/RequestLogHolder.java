@@ -20,14 +20,17 @@ public class RequestLogHolder {
         requestLog.startLog(joinPoint);
     }
 
-    public static RequestLog endLog(Object result){
+    public static RequestLog endLog(Object result,Class<?> resultType){
         RequestLog requestLog=REQUEST_LOG.get();
         if(requestLog==null){
             requestLog = WebPlusManager.getRequestLog();
             requestLog.startLog();
         }
-        requestLog.endLog(result);
-        return requestLog;
+        if(requestLog.support(resultType)){
+            requestLog.endLog(result);
+            return requestLog;
+        }
+        return null;
     }
 
 

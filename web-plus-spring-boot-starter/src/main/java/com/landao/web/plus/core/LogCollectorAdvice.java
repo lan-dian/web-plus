@@ -25,13 +25,12 @@ public class LogCollectorAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
                                   Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        try {
-            RequestLog requestLog = RequestLogHolder.endLog(body);
-            requestLogCollector.collectRequestLog(requestLog);
-        }catch (Throwable e){
-            e.printStackTrace();
-        } finally {
-            return body;
+        if(body!=null){
+            RequestLog requestLog = RequestLogHolder.endLog(body,body.getClass());
+            if(requestLog!=null){
+               requestLogCollector.collectRequestLog(requestLog);
+            }
         }
+        return body;
     }
 }

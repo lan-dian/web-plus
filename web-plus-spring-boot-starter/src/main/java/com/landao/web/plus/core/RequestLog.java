@@ -21,4 +21,8 @@ public interface RequestLog {
      */
     void startLog();
 
+    default boolean support(Class<?> returnType){
+        return true;
+    }
+
 }

@@ -92,6 +92,11 @@ public class CommonResultLog implements RequestLog {
     }
 
     @Override
+    public boolean support(Class<?> returnType) {
+        return returnType.equals(CommonResult.class);
+    }
+
+    @Override
     public void startLog() {
         initRequestLog();
         //设置类名和方法名
@@ -120,11 +125,7 @@ public class CommonResultLog implements RequestLog {
     @Override
     public void endLog(Object result) {
         calculateTimeCost();//计算请求耗时
-        if(!(result instanceof CommonResult)) {
-            throw new RuntimeException(this.signature + "返回类不是CommonResult:" + (result == null ? "null" : result.getClass().getSimpleName()));
-        }else {
-            recordCommonResult((CommonResult<?>) result);
-        }
+        recordCommonResult((CommonResult<?>) result);
 
         HttpServletResponse response = NewxWebUtils.getResponse();
         this.status = response.getStatus();
