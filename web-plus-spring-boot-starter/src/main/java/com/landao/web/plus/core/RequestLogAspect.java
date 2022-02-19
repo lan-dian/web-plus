@@ -14,9 +14,7 @@ public class RequestLogAspect {
     public static final String or = "||";
 
 
-    @Before("@within(org.springframework.web.bind.annotation.RestController) "
-            + or + "@within(org.springframework.stereotype.Controller)"
-            + or + "@within(com.landao.web.plus.annotation.RequestController)")
+    @Before("execution(public * *..controller.*.*(..))")
     public void startLog(JoinPoint joinPoint) {
         RequestLogHolder.clear();
         RequestLogHolder.startLog(joinPoint);
