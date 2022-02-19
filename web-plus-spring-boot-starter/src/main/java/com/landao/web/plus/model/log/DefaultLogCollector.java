@@ -5,6 +5,7 @@ import com.landao.web.plus.core.RequestLogCollector;
 import com.landao.web.plus.utils.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 
 public class DefaultLogCollector implements RequestLogCollector {
 

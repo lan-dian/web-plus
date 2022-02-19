@@ -20,6 +20,7 @@ public class RequestLogHolder {
         requestLog.startLog(joinPoint);
     }
 
+
     public static RequestLog endLog(Object result,Class<?> resultType){
         RequestLog requestLog=REQUEST_LOG.get();
         if(requestLog==null){
