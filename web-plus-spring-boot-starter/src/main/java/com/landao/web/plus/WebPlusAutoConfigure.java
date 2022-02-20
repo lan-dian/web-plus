@@ -9,6 +9,7 @@ import com.landao.web.plus.model.log.CommonResultLog;
 import com.landao.web.plus.core.RequestLog;
 import com.landao.web.plus.model.log.DefaultLogCollector;
 import com.landao.web.plus.utils.JsonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
